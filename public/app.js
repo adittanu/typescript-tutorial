@@ -28,16 +28,25 @@ const addUID = (obj) => {
 };
 let docOne = addUID({ name: 'yoshi', age: 40 });
 let docTwo = addUID({ name: 'mario' });
-console.log(docOne.name);
-console.log(docTwo.uid);
+// ENUMS
+var ResourceType;
+(function (ResourceType) {
+    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
+    ResourceType[ResourceType["AUTHOR"] = 1] = "AUTHOR";
+    ResourceType[ResourceType["FILM"] = 2] = "FILM";
+    ResourceType[ResourceType["DIRECTOR"] = 3] = "DIRECTOR";
+    ResourceType[ResourceType["PERSON"] = 4] = "PERSON";
+})(ResourceType || (ResourceType = {}));
 const docThree = {
     uid: 1,
     resourceName: 'person',
-    data: 'shaun'
+    resourceType: ResourceType.BOOK,
+    data: { name: 'mario' }
 };
 const docFour = {
     uid: 2,
     resourceName: 'shoppingList',
-    data: ['pen', 'book']
+    resourceType: ResourceType.PERSON,
+    data: { name: 'yoshi', age: 20 }
 };
-console.log(docFour);
+console.log(docFour, docThree);
